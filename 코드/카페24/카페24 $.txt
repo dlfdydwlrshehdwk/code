@@ -1,0 +1,48 @@
+{$summary_desc} 상품 설명
+{$product_name} 상품명 
+{$product_name_title} 상품명 : 
+{$summary_desc} 요약설명 
+{$prd_price_sale} 할인가 
+{$product_price} 상품가 
+
+// 각종 아이콘들
+{$new_icon} 
+{$stock_icon}
+{$recommend_icon} 			
+{$product_icons} 
+{$today_arrival_icon} 
+{$pickup_icon} 
+{$benefit_icons}
+{$list_wish_icon} 찜 아이콘
+{$basket_icon} 장바구니 아이콘
+{$soldout_icon} 품절 아이콘
+
+// 두번 같은 구문적으면 반복문인데 이 때 사용되는 for문의 x느낌
+{$item_title} 제목
+{$item_content} 내용
+
+배너매니저에선 {#item} 을 사용한다 헷갈리니 주의
+
+
+
+/* footer */
+모듈 : module="Layout_footer"
+Class 반환 코드값 : xans-element- xans-layout xans-layout-footer
+- 사용 가능 변수 -
+{$bottom_logo} : 화면 하단 쇼핑몰 로고
+{$mall_name} : 상점명
+{$company_name} : 법인명 (상호)
+{$phone} : 대표전화
+{$fax} : 대표팩스
+{$email} : 대표메일
+{$mall_zipcode} : 사업장주소 - 우편번호
+{$mall_addr1} : 사업장주소 1 ( 시군구 )
+{$mall_addr2} : 사업장주소 2 ( 상세주소 )
+{$president_name} : 대표자 성명
+{$company_regno} : 사업자 등록번호
+{$network_regno} : 통신판매업 신고
+{$runtime} : 운영시간
+{$cpo_name} : 개인정보보호 책임자 성명
+{$cpo_email} : 개인정보보호 책임자 메일
+{$biz_no_link} : 사업자정보확인 링크
+{$action_biz_info} : 사업자정보확인 링크 (onclick)
