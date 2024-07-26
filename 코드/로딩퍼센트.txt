@@ -1,0 +1,17 @@
+document.imageObject.complete
+// return Boolean
+
+
+var progressCounter = setInterval(function () {
+    if (document.images.length === 0) return false;
+
+    var loaded = 0;
+    for (var i = 0; i < document.images.length; i++) {
+        if (document.images[i].complete) loaded++;
+    }
+
+    var percentage = Math.round(100 * loaded / document.images.length);
+    document.getElementById("progress").innerHTML = percentage + "%";
+
+    if (percentage == 100) clearInterval(progressCounter);
+}, 10);

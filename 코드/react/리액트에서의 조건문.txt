@@ -1,0 +1,105 @@
+리액트에서는 주로 삼항연산자를 이용하지만 그 밖에도 조건문을 사용할 수 있는 몇가지의 방식이 있으며 
+이런게 있다 정도 하고 넘어가면 좋을듯 하다.
+
+1. 컴포넌트 안에서 쓰는 if/else
+
+function Component() {
+  if ( true ) {
+    return <p>참이면 보여줄 HTML</p>;
+  } else {
+    return null;
+  }
+}
+
+JSX를 조건부로 보여주고 싶으면 이렇게 사용가능
+return() 안에서는 if/else가 안되기에 if문안에서 return문을 이용
+
+! 참고 이렇게 사용하면 else생략이 가능
+
+function Component() {
+  if ( true ) {
+    return <p>참이면 보여줄 HTML</p>;
+  } 
+  return null;
+} 
+
+2. 흔히 아는 삼항연산자
+
+function Component() {
+  return (
+    <div>
+      {
+        1 === 1
+        ? <p>참이면 보여줄 HTML</p>
+        : null
+      }
+    </div>
+  )
+} 
+
+3. && 연산자로 if 역할 대신하기
+
+function Component() {
+  return (
+    <div>
+      { 1 === 1 && <p>참이면 보여줄 HTML</p> }
+    </div>
+  )
+}
+
+조건이 true면 뒤에 값을 남겨준다.
+false가 있다면 처음등장하는 false값을 먼저 잡아준다.
+조건 ? 값 : null 같은 간단한 조건문일때 자주 사용할 수 있는 조건문이다. 기존 삼항연산자보다 짧음
+
+4. switch / case 조건문
+
+function Component2(){
+  var user = 'seller';
+  if (user === 'seller'){
+    return <h4>판매자 로그인</h4>
+  } else if (user === 'customer'){
+    return <h4>구매자 로그인</h4>
+  } else {
+    return <h4>그냥 로그인</h4>
+  }
+}
+
+if문을 연달아 여러개 사용해야 할 경우 써볼만한 조건문
+
+5. 객체/배열 자료형 응용
+
+function Component() {
+  var 현재상태 = 'info';
+  return (
+    <div>
+      {
+        { 
+           info : <p>상품정보</p>,
+           shipping : <p>배송관련</p>,
+           refund : <p>환불약관</p>
+        }[현재상태]
+      }
+
+    </div>
+  )
+} 
+현재상태에 맞는 데이터만 뽑아서 보여준다고함
+
+var 탭UI = { 
+  info : <p>상품정보</p>,
+  shipping : <p>배송관련</p>,
+  refund : <p>환불약관</p>
+}
+
+function Component() {
+  var 현재상태 = 'info';
+  return (
+    <div>
+      {
+        탭UI[현재상태]
+      }
+    </div>
+  )
+} 
+
+이렇게도 사용가능

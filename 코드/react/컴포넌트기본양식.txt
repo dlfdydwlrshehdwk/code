@@ -1,0 +1,23 @@
+1. 기본양식 
+
+function Practice() {
+
+	return (
+	코드
+	)
+}
+
+export default Practice
+
+2. 컴포넌트 임포트해서 사용할때 
+
+import Component from 경로
+
+function Practice() {
+
+	return (
+	<Component />
+	)
+}
+
+export default Practice

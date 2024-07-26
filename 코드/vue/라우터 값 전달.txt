@@ -1,0 +1,11 @@
+	methods: {
+		toMove(routeName) {
+			this.$router.push({ name: routeName, params: { page: 1, searchText: '' } });
+		},
+	}
+
+
+	라는 메소드로 라우터를 푸시했을때 파람스값 받는법
+
+	1. 데이터에 yyy : this.$route.params.searchText -> {{ yyy }}
+	2. 템플릿에 : {{ $route.parmas.searchText }}

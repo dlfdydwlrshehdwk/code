@@ -1,0 +1,54 @@
+예제사이트
+
+https://jsfiddle.net/Kimtaeng/xo8neqpL/1/
+https://madplay.github.io/post/jquery-sortable
+ 
+
+<table class="table_type_a sortable">
+                            <thead>
+                                <tr>
+                                    <th><span class="input_chk"><input type="checkbox" id="chk_all" onchange="allChk(this.checked)"><label for="chk_all" class="input_chk_label"><span class="text_hidden">전체선택</span></label></span></th>
+                                    <th>순서변경</th>
+                                    <th>NO</th>
+                                    <th>이미지</th>
+                                    <th>관계사 명</th>
+                                    <th>등록일</th>
+                                    <th>노출여부</th>
+                                    <th>작성자</th>
+                                    <th>수정</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="brand_list" th:each="item, loop : ${list}">
+                                    <td class="td_chk">
+                                        <span class="input_chk">
+                                        <input type="checkbox" th:id="'chk_list'+${item?.idx}" name="chk_list" th:data-idx="${item?.idx}"><label class="input_chk_label" th:for="'chk_list'+${item.idx}">
+                                        <span class="text_hidden">선택</span></label></span></td>
+                                    <td class="td_drag sort_handle"><img src="/img/admin/icon/icon_menu.png" alt="icon_line"></td>
+                                    <td class="td_num" th:text="${((pageNum-page-1)*10)+listCount-((pageNum-page)*10)-((page-2)*10)-loop.index}"></td>
+                                    <td class="td_img"><img th:if="${item?.img_file != ''}" th:src="${item?.img_file}" alt="spc"></td>
+                                    <td class="td_title" th:text="${item?.brand_name}"></td>
+                                    <td th:text="${#temporals.format(item.reg_date, 'yyyy-MM-dd')}"></td>
+                                    <td class="td_show on" th:if="${item?.show_yn} == 'Y'"><span>on</span></td>
+                                    <td class="td_show deactivated" th:if="${item?.show_yn} == 'N'"><span>off</span></td>
+                                    <td class="td_writer" th:text="${item?.admin_name}">
+                                        <ul class="admin_list">
+                                            <li class="admin"><img src="/img/admin/test/admin01.webp" alt="spc"></li>
+                                        </ul>
+                                    </td>
+                                    <td class="td_edit"><a th:href="'/admin/relative_upload?idx='+${item?.idx}" class="circle_btn btn_edit"></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+            $(document).ready(function () {
+
+                // drag & drop
+                $(".sortable").sortable({
+                    cursor: "move",
+                    items: $('.brand_list'),
+                    handle: '.sort_handle',
+                    placeholder: "sortable-placeholder",
+                }).disableSelection();
+            })

@@ -1,0 +1,27 @@
+// n번째에 element 삽입
+arr.splice(n, 0, element);
+
+원소 1개 삽입
+const fruits = ["Apple", "Banana", "Orange", "Mango"];
+const element = "Melon";
+fruits.splice(2, 0, element);
+console.log( fruits );
+
+원소 여러개 삽입
+예시1
+const fruits = ["Apple", "Banana", "Orange", "Mango"];
+const elements = ["Melon", "Watermelon"];
+fruits.splice(2, 0, elements); // ⚠️ 배열 그대로 삽입
+console.log( fruits );
+
+예시2
+const fruits = ["Apple", "Banana", "Orange", "Mango"];
+const elements = ["Melon", "Watermelon"];
+fruits.splice(2, 0, elements[0], elements[1]);
+console.log( fruits );
+
+예시3
+const fruits = ["Apple", "Banana", "Orange", "Mango"];
+const elements = ["Melon", "Watermelon"];
+fruits.splice(2, 0, ...elements);
+console.log( fruits );

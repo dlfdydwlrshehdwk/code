@@ -1,0 +1,36 @@
+let image = [];
+    let obj = { curimg: 0 };
+    for (let i = 71; i < 704; i++) { // 이미지 시작숫자 - 마지막숫자
+      // i = i.toString().padStart(3, "0"); // 이미지 숫자가 000001 이런식이라 설정
+      image.push(`../../assets/common/images/sequence/LOW15fps/[ NEUL Digital Healthcare ] Brand Site (New)_v4.0.FIN_Sequence_LOW_15fps_00${i}.jpg`); // 경로설정해서 배열에 푸쉬
+    }
+
+    let controller = new ScrollMagic.Controller();
+
+    let tween = TweenMax.to(obj, 0.3, {
+      curimg: image.length - 1,
+      roundProps: "curimg",
+      repeat: 0,
+      immediateRender: true,
+      ease: Linear.easeNone,
+      onUpdate: function () {
+        $(".testimg").attr("src", image[obj.curimg]); // 이미지태그에 이미지배열넣기 업데이트로 obj.curimg가 변경됨
+      },
+      onComplete: () => {
+        // $(window).scrollTop($(".trg2").offset().top - 100); // 끝났을때 콜백함수 자연스러운 위치이동을위해 넣음 필수x
+      },
+    });
+    let scene = new ScrollMagic.Scene({
+      triggerElement: ".test1", // 트리거
+      duration: "1500%", // 뷰포트기준 현재 15배 1500vh 이걸로 스크롤전체길이 조정
+      triggerHook: 0,
+    })
+      .setTween(tween)
+      .addTo(controller)
+      .setPin(".test1") // 핀고정
+      .on("start end", () => {
+        $(".trg").css({ opacity: 1 }); // 시작과 끝에서시작에 투명도넣어서 보이게 
+      })
+      .on("leave", () => {
+        $(".trg").css({ opacity: 0 }); // 포지션fix다보니 투명도를안주면 밑에서 계속 남아서 보임
+      });

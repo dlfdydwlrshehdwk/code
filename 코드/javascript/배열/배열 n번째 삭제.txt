@@ -1,0 +1,8 @@
+// i번째부터 1개 삭제
+arr.splice(i, 1);
+
+var fruits = ["Apple", "Banana", "Orange", "Mango"];
+// [2]번째부터 1개 삭제
+fruits.splice(2, 1);
+console.log( fruits );
+</script>

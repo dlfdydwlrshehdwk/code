@@ -1,0 +1,19 @@
+1. node 설치 
+구글에 nodejs 검색 LTS 버전 설치 (13버전 이하나 17버전은 ㄴㄴ) chocolaty설치 안해도됨
+
+2. 터미널에 npx create-react-app 작명
+
+3. 미리보기 띄우기 (경로 잘 확인)
+터미널에 npm start
+
+에러사항
+허가되지 않은 스크립트 어쩌구 
+윈도우 하단 검색메뉴에서 Powershell 검색 - 우클릭 - 관리자 권한으로 실행한 뒤
+
+Set-ExecutionPolicy Unrestricted
+
+라고 대소문자 하나라도 틀리지않고 입력하고 엔터칩니다.
+
+그 다음에 뭐 선택하라고 하면 y 누르고 엔터치면 될듯요
+
+그럼 이제 npx, npm으로 뭐 하는거 잘됩니다.

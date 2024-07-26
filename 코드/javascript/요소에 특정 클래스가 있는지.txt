@@ -1,0 +1,3 @@
+요소.classList.contains('클래스명')   ==> boolen 값 출력
+
++ 요소에서 특정 class를 가진 요소를 선택하고싶다면 요소.getElementByClassName('클래스명')

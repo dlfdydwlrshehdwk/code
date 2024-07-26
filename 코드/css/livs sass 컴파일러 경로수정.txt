@@ -1,0 +1,5 @@
+ctrl + , 눌러서 설정들어감
+
+설정 검색란에 json치고 Launch에 settings.json 편집으로 들어감
+
+livesasscompie.settings.format 에 savePath 수정

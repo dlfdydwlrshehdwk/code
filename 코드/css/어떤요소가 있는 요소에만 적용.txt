@@ -1,0 +1,7 @@
+.main_section03 .description:has(li[rel="할인판매가"]) li[rel="판매가"] {
+    float: left;
+}
+
+셀렉터1:has(셀렉터2) 셀렉터3 { }
+
+셀렉터1에서 셀렉터2가 있을때 셀렉터3한테 적용

@@ -1,0 +1,27 @@
+$( "요소" ).datepicker({
+				dateFormat: "yy.mm.dd",
+				showOn: "both",
+				yearSuffix: '.',
+				showMonthAfterYear: true,
+				buttonImage: '../../assets/images/icon/ico_cal.png',
+				buttonImageOnly: true,
+				monthNames: [ "01","02","03","04","05","06","07","08","09","10","11","12" ], 
+				monthNamesShort: [ "01","02","03","04","05","06","07","08","09","10","11","12" ],
+				dayNames: [ "일요일","월요일","화요일","수요일","목요일","금요일","토요일" ], 
+				dayNamesShort: [ "일","월","화","수","목","금","토" ], 
+				dayNamesMin: [ "일","월","화","수","목","금","토" ],
+			});
+
+
+
+// datepicker 인풋창 비우기
+$("#registration").datepicker("setDate","")
+
+// datepicker 실행안되게
+$("#registration").datepicker("option","disabled",true) 
+// 되게
+$("#registration").datepicker("option","disabled",true) 
+
+// datepicker 한번에 보이게 
+// ex 체크를 하고 인풋을누르면 보이는게아닌 체크를 하자마자 보이게
+$("#registration").datepicker("show")

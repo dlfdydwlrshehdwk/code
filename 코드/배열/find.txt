@@ -1,0 +1,7 @@
+array자료 안에서 원하는 항목만 찾아올 수 있는 find()문법
+
+array.find(()=>{return 조건식})
+
+array.find((x)=>{return x.id == 1} 이런식. 맞다면 return해줌 
+
+배열은 대충 [{id : 0},{id : 1},{id : 2},{id : 3 }] 이런식

@@ -1,0 +1,29 @@
+1. 설치
+1-1. cdn
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+1-2. 터미널
+npm i axios
+
+2. 사용법
+axios.get(url주소) 
+axios.post(url주소,data 객체) 
+
+//기본적으로 axios 메소드는 promise 객체를 return 합니다.
+axios.get(url주소).then(function(result){
+	//result 객체에는 status, data 등 다양한 코드가 들어갑니다.
+}).catch(function(error){
+	
+})
+
+3. 실 사용
+const url = "https://jsonplaceholder.typicode.com/todos/1";
+axios.get(url)
+	.then(function (result) {
+    	const status = result.status;
+        const data = result.data;
+        console.log("통신결과 : ", result);
+     })
+     .catch(function (err) {
+          console.log(err);
+     });
+console.log("바로실행");

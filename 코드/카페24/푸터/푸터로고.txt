@@ -1,0 +1,13 @@
+모듈명: layout_logobottom
+
+예시 : 
+<span module="Layout_LogoBottom">
+    <!--@css(/css/module/layout/logobottom.css)-->
+    <a href="/index.html"><img src="{$logo}" alt="{$mall_name}" /></a>
+</span>
+
+Class 반환 코드값 : xans-element- xans-layout xans-layout-logobottom
+
+- 사용 가능 변수 - 
+{$logo} : 로고이미지주소
+{$mall_name} : alt 값

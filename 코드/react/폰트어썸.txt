@@ -1,0 +1,11 @@
+npm 설치
+$ npm i @fortawesome/fontawesome-svg-core
+$ npm i @fortawesome/free-solid-svg-icons @fortawesome/free-regular-svg-icons @fortawesome/free-brands-svg-icons
+$ npm i @fortawesome/react-fontawesome
+
+2. 임포트 하기
+FontAwesome 을 사용하기 위해 선언을 하나 해준다.
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+3. 호출하기
+<FontAwesomeIcon icon={faBars} />

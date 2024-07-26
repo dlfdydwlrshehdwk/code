@@ -1,0 +1,19 @@
+◆한 줄 말줄임  
+width: 250px;
+text-overflow: ellipsis;
+white-space: nowrap;
+overflow: hidden;
+
+한 줄 말줄임에 필요한 속성은 총 4가(width, text-overflow, white-space, overflow 이다
+
+
+◆여러줄 말줄임
+width: 300px;
+text-overflow: ellipsis;
+overflow: hidden;
+display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 3;
+
+여러줄 말줄임에 필요한 속성은 총 6가지이다.
+width, display, -webkit-line-clamp, -webkit-box-orient, text-overflow, overflow

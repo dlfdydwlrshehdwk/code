@@ -1,0 +1,95 @@
+<javascript>
+
+//전역변수
+let gbgb;
+// 로딩 팝업 띄우기
+  openLoadingPopup : function(){
+    let loading = `
+    <div class="loading">
+      <div class="loading-ring"></div>
+      <div class="loading-ring"></div>
+      <div class="loading-ring"></div>
+      <div class="loading-ring"></div>
+      <div class="loading-ring"></div>
+      <div class="loading-txt">Loading...</div>
+    </div>
+    `
+
+    $("body").append("<div class='modal'>");
+    $('body').append(loading)
+    $("body").css("position", "absolute").css("overflow", "hidden");
+		$(".modal").show();
+
+    let i = 0;
+    let LoadingArr = ['Loading.','Loading..','Loading...']
+    let chgLoading = () => {
+      if(i > LoadingArr.length){
+        i = 0
+      }
+      $('.loading-txt').text(LoadingArr[i])
+      i++;
+    }
+    gbgb = setInterval(chgLoading,400)
+  },
+  // 로딩 팝업 닫기
+  closeLoadingPopup : function () {
+    $(".modal").remove();
+    $('.loading').remove();
+		$("body").css("position", "relative").css("overflow", "auto");
+    // Loading... 실행 멈춤 
+    clearInterval(gbgb)
+  },
+
+
+
+<css>
+
+.loading {
+  position: fixed;
+  width: 100px;
+  aspect-ratio: 1/1;
+  top: 50%;
+  left: 50%;
+  z-index: 900;
+  display: block;
+  transform: translate(-50%,-50%);
+  &-ring {
+    position: absolute;
+    width: 100%;
+    aspect-ratio: 1/1;
+    border: 5px solid;
+    border-radius: 50%;
+    border-color: #3870FF transparent transparent transparent;
+    opacity: 1;
+    animation: rotate-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    &:nth-child(1){
+      border-color: rgba(255, 255, 255, 0.9);
+    }
+    &:nth-child(3){
+      animation-delay: 0.35s;
+    }
+    &:nth-child(4){
+      animation-delay: 0.25s;
+    }
+    &:nth-child(5){
+      animation-delay: 0.15s;
+    }
+  }
+  &-txt {
+    font-size: 14px;
+    color: $white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+
+  @keyframes rotate-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}

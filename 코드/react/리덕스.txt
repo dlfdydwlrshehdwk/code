@@ -1,0 +1,172 @@
+Redux 리덕스 쓰는 이유
+
+props없이 state를 공유할 수 있게 도와주는 라이브러리이다.
+
+리덕스를 설치하면 js파일 하나에 state들을 보관할 수 있게된다.
+-> 귀찮게 props 전송할필요 없다는 뜻. -> 컴포넌트가 많으면 프롭스를 많이씀 -> 사이트가 커지게 되면 리덕스를 사용하는 것이 좋다.
+
+설치
+터미널열고 npm install @reduxjs/toolkit react-redux
+!참고 redux toolkit이라는 라이브러리는 redux의 개선버전이라고 생각하면 되며 문법이 좀 더 쉬워짐
+
+설치하기전 package.json을 열어서
+"react" 와 "react-dom" 항목의 버전을 확인 두개가 18.1.x 이상이여야 사용가능 
+안된다면 "^18.1.0" 으로 수정후 저장 후 npm install 어쩌구 실행
+
+셋팅
+1. 아무데나 store.js 파일을 만들고 아래 코드를 복붙 src폴더안에 대충 만들면 될 듯.
+
+import { configureStore } from '@reduxjs/toolkit'
+
+export default configureStore({
+  reducer: { }
+})
+
+2. index.js 로 가서 Provider라는 컴포넌트와 아까 작성한 store.js 파일을 import해온다.
+그리고 밑에 <Provider store={import해온거}> 이걸로 <App/> 을 감싸면 된다. 
+그럼 이제 <App>과 그 모든 자식컴포넌트들은 store.js에 있던 state를 맘대로 꺼내쓸 수 있게된다.
+
+import { Provider } from "react-redux";
+import store from './store.js'
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
+  </React.StrictMode>
+); 
+
+
+사용법
+리덕스 스토어에 state보관하는 법
+1. createSlice() 로 state만들고
+2. configureStore() 안에 등록
+
+(store.js)
+import { configureStore, createSlice } from '@reduxjs/toolkit'
+
+let user = createSlice({
+  name : 'user',
+  initialState : 'kim'
+})
+
+export default configureStore({
+  reducer: {
+    user : user.reducer
+  }
+}) 
+
+1. createSlice( ) 상단에서 import 해온 다음에 
+{ name : 'state이름', initialState : 'state값' } 이거 넣으면 state 하나 생성가능. 
+(createSlice( ) 는 useState( ) 와 용도가 비슷하다고 보면 됨)
+
+2. state 등록은 configureStore( ) 안에 하면 됨.
+{ 작명 : createSlice만든거.reducer } 이러면 등록 끝. 
+여기 등록한 state는 모든 컴포넌트가 자유롭게 사용가능하다. 
+
+
+리덕스 스토어에 있던 state 가져다 쓰는 법
+
+아무 컴포넌트에서 useSelector((state) => { return state } ) 쓰면 store에 있던 모든 state가 그 자리에 남는다.
+import { useSelector } from "react-redux"
+
+function Component(){
+  let a = useSelector((state) => { return state } ) 또는 let a = useSelector((state) => state )
+  console.log(a)
+
+  return (생략)
+}
+
+
+스토어에 있는 state 변경하는 법
+
+1. store.js에 state변경해주는 함수를 만든다.
+2. export 한다.
+3. 필요할 때 import해서 사용하면되는데 dispatch()로 감싼 후 사용해야한다.
+
+1. store.js에 state변경해주는 함수를 만든다.
+let user = createSlice({
+  name : 'user',
+  initialState : 'kim',
+  reducers : {
+    changeName(state){
+      return 'john ' + state
+    }
+  }
+})
+
+createSlice 안에 reducers : { } 열고 거기 안에 함수를 만들면 된다.
+- 함수이름은 마음대로, - 파라미터 하나 작명하면 그건 기존 state가 된다, - return 우측에 새로운 state입력하면 그걸로 기존 state를 갈아치워준다.
+
+2. 다른곳에서 사용가능하게 export 해둔다.
+
+export let { changeName } = user.actions
+이런 코드를 store.js 밑에 추가한다.
+slice이름.actions라고 적으면 state변경함수가 전부 그 자리에 출력된다.
+그걸 변수에 저장했다가 export 하라는 뜻임 
+
+3. 원할때 import해서 사용, dispatch()로 감싸서 
+
+아무컴포넌트에서
+임포트 할거하고
+import { useDispatch, useSelector } from "react-redux"
+import { changeName } from "./../store.js"
+
+(생략)
+<button onClick={()=>{
+  dispatch(changeName())
+}}>버튼</button> 
+
+store.js에서 원하는 state변경함수 가져오고 useDispatch도 라이브러리에서 가져오고 dispatch()에 감싸서 변경함수 실행
+
+
+스토어에 있는 state값이 배열이나 객체일경우 변경하려면
+
+store에 저장된 state가 배열이나 객체라면 state변경을 좀 더 쉽게 할 수 있다고 한다.
+
+let user = createSlice({
+  name : 'user',
+  initialState : {name : 'kim', age : 20},
+  reducers : {
+    changeName(state){
+      state.name = 'park'
+    }
+  }
+}) 
+이렇게 state를 직접 수정해도 변경이 잘된다. 
+그 이유는 immer.js 라이브러리가 state사본을 하나 더 생성해주기 때문인데 Redux 설치하면 같이 딸려온다고 함.
+그래서 배열/객체 자료의 경우 state변경은 state를 직접 수정해버려도 잘되니 직접수정해도괜찮다고함.
+!참고 그래서 state만들때 숫자하나만 필요해도 일부러 객체나 배열에 담는 경우가 있다고한다 -> 수정이 편하기 때문
+
+state 변경함수가 여러개 필요하다면?
+
+함수의 파라미터 문법같은게 있어서 비슷한 함수를 여러개 만들필요가 없다.
+let user = createSlice({
+  name : 'user',
+  initialState : {name : 'kim', age : 20},
+  reducers : {
+    changeName(state){
+      state.name = 'park'
+    },
+    increase(state, a){
+      state.age += a.payload
+    }
+  }
+})
+
+export let { changeName, increase } = user.actions
+
+state변경함수에 두번째 파라미터는 이런식으로 파라미터입력을 해서 함수 사용이 가능하다.
+파라미터자리에 넣은 자료들은 a.payload 하면 나온다. increase(100) 이런식으로 사용가능
+!참고 a말고 action을 작명으로 많이쓴다고함 + action.type 하면 state변경함수 이름이 나오며, action.payload 하면 파라미터가 나온다.
+
+
+음.. 리덕스를 사용하다보니 코드가 너무 길어서 보기 어렵다. 싶으면 파일분할을 하면된다.
+store폴더를 생성하고 / 안에 slide이름으로 .js파일을 만들었다고 가정
+let user 부터 export let 저거 다 잘라서 넣음 -> 슬라이스.js에서 createSlice임포트 -> 맨 밑에 exportdefault user; 해줌 
+-> 리덕스에서 import user from 경로 해줌 -> 변경함수 쓰는애들 경로도 수정해줌
+

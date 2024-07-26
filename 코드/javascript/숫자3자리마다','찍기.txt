@@ -1,0 +1,3 @@
+function toLocaleString(num) { // 숫자형 넣으면 3단위마다 ',' 찍어줌
+	 return num.toLocaleString()
+}

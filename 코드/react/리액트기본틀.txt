@@ -1,0 +1,17 @@
+function Practice() {
+
+	return (
+	코드
+	)
+}
+
+export default Practice
+
+또는 
+
+export default function Practice() {
+
+	return (
+	코드
+	)
+}

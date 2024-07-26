@@ -1,0 +1,19 @@
+1. react앱 안에서 설치해야함 
+npx create-react-app 작명  (리액트 먼저 설치)
+2. 리액트 폴더로 들어온 후 스토리북설치
+cd 작명 enter
+npx @storybook/cli sb init 또는 yarn sb init
+
+
+실행 
+npm run strorybook or yarn sb init - yarn storybook
+
+설치가 끝나면 packge.json파일에 2개의 스크립트와 여러개의 개발 의존성이 추가된것을 
+확인할 수 있다
+스토리북, 빌드-스토리북 . @스토리북 어쩌구 여러개
+addons.js파일은 Storybook 애드온을 추가할 때 사용하고, 
+config.js 파일은 그 밖에 다른 설정을 할 때 사용된다.
+
+.storybook/config.js 파일을 열고, 
+src 디렉터리 내부에 stories.js로 끝나는 모든 파일이 Story로 인식되도록 설정해준다.
+ (기본 설정은 src/stories 디렉터리 하위만 탐색하므로 주석 처리가 하거나 삭제함.)

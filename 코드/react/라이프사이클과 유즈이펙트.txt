@@ -1,0 +1,59 @@
+컴포넌트는 Lifecycle이라는 개념이 있다.
+컴포넌트도 인생이 있다 라는 것.
+
+페이지에 장착 되었을때 mount
+업데이트 될때 update
+제거될때 unmount
+와 같이 존재하는데 이걸 알아야하는 이유는
+이 중간에 간섭이 가능하기 때문
+
+페이지에 컴포넌트가 장착되었을때 코드실행 이런식으로 컴포넌트의 라이프싸이클에 간섭이 가능 - 이 간섭하는걸 hook이라고 해서 lifecycle hook이라고함
+
+
+사용법
+import {useState, useEffect} from 'react';
+
+function Detail(){
+
+  useEffect(()=>{
+    //여기적은 코드는 컴포넌트 로드 & 업데이트 마다 실행됨
+    console.log('안녕')
+  });
+  
+  return (생략)
+}
+
+! useEffect 밖에다가 적어도 mount & update시 실행은 된다.
+
+
+그럼 useEffect에서 사용하는 이유는 ? -> useEffect안에 적은 코드는 html렌더링 이후에 동작하게 된다.
+예를 들어 시간이 오래걸리는 코드가 있을때 일반코드는 코드가 다 실행된뒤에 html이 보이게되나
+useEffect안에 적어놓은 코드는 html을 먼저 보여주고 실행이된다. ( 렌더링이 빠른사이트가 된다)
+
+
+다양한 사용방법
+
+1. 재렌더링마다 실행
+useEffect(()=>{ 실행할코드 })
+
+2. 컴포넌트 mount시 1회만 실행
+useEffect(()=>{ 실행할코드 }, [])
+
+3.useEffect안의 코드를 실행하기 전에 항상 실행
+useEffect(()=>{ 
+  return ()=>{
+    실행할코드
+  }
+})
+
+4. 컴포넌트 unmount시 1회 실행
+useEffect(()=>{ 
+  return ()=>{
+    실행할코드
+  }
+}, [])
+
+5. state1이 변경될때만 실행(페이지 로드시에도 state1은 건드는거니까 실행됨)
+useEffect(()=>{ 
+  실행할코드
+}, [state1])

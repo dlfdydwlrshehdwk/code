@@ -1,0 +1,21 @@
+is not valid JSON
+
+에러 문구
+Uncaught (in promise) SyntaxError: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+
+api 가 JSON으로 읽히지 않는다는 뜻
+
+fetch에서 헤더 내 Accept에 application/json을 명시해주니 해결
+headers: {
+  Accept: "application / json",
+},
+
+전체코드
+	fetch("data/allGroup.json", {
+	  headers: {
+	    Accept: "application / json",
+	  },
+	  method: "GET",
+	})
+  .then(res => res.json())
+  .then(data => {});

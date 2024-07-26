@@ -1,0 +1,29 @@
+$('.filebox').each(function(i){
+		var filename;
+		$(this).find('.upload-hidden').on("change",function(){
+			if(window.FileReader){
+				filename = $(this)[0].files[0].name;
+			}
+			else {
+				filename = $(this).val().split('/').pop().split('\\').pop();
+			}
+			$(this).siblings('.upload-name').val(filename);
+		})
+	})
+
+
+<div class="form-set">
+											<div class="file-set">
+												<div class="filebox md">
+													<input class="upload-name" readonly="" placeholder="선택된 파일 없음">
+													<input type="file" id="ex_file1" class="upload-hidden">
+													<label for="ex_file1">파일첨부</label>
+												</div>
+                        <div class="cmt">jpg, png, pdf, xlsx, docx, hwp, zip 형식, 최대 5MB</div>
+											</div>
+											<div class="file-info">
+												<div class="chip chip-close">
+													<div class="txt">20230915파일명.png</div>
+													<button type="button" class="btn-del"></button>
+											</div>
+										</div>

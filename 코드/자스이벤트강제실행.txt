@@ -1,0 +1,4 @@
+window.addEventListener("resize", this.titleText);
+window.dispatchEvent(new Event('resize'))
+
+저려면 this.titleText가 바로실행됨

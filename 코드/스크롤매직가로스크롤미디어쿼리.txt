@@ -1,0 +1,43 @@
+핵심은 리사이즈시 트윈을 비워주고 clear로 add로 새로운값으로 바뀐 트윈을 추가해주었다.
+let windW = $(window).width();
+      let targetW = 움직여야할슬라이드.width();
+      let ww = parseInt($(".news").css("padding-right"));
+      let end = targetW - windW + ww + ww / 2;
+      패딩같은거로 밀린 슬라이드만큼의 여백 구하기 윈도우크기 - 슬라이드 넘치는부분 길이 측정해서 빼기
+
+
+let controller = new ScrollMagic.Controller();
+
+      let tween = gsap.timeline().to(움직여야할슬라이드, {left: -end + "px",});
+
+      let scene = new ScrollMagic.Scene({
+        triggerElement: 트리거,
+        duration: "100%",
+        triggerHook: 0,
+      })
+        .setTween(tween)
+        .addTo(controller)
+        .setPin(".news")
+        .on("start", () => {
+        })
+        .on("end", () => {
+        })
+      let nowW = $(window).width();
+      let startW = $(window).width();
+
+      scene.on("update", () => {
+        $(window).resize(() => {
+          nowW = $(window).width();
+        
+        if (nowW != startW) {
+
+          let windW = $(window).width();
+          let targetW = $(".news-target").width();
+          let ww = parseInt($(".news").css("padding-right"));
+          let end = targetW - windW + ww + ww / 2;
+          $('.news-target').css({left : -end})
+          tween.clear(true)
+          tween.add(gsap.fromTo(".news-target",{left : 0},{left: -end + "px"}))
+        }
+      });
+      });

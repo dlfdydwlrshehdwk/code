@@ -1,0 +1,32 @@
+import React, { useState } from 'react';
+
+function App() {
+  return (
+    <div className="App">
+      <Parent />
+    </div>
+  );
+};
+
+const Parent = (props) => {
+  const [data, setData] = useState("initial data");
+  
+  return (
+    <>
+      <div>{data}</div>
+      <Child setData={setData} />
+    </>
+  );
+};
+
+const Child = (props) => {
+  return (
+    <>
+      <button onClick={() => props.setData("data from child")}>
+        send data to parent
+      </button>
+    </>
+  );
+};
+
+요약 state 변경함수를 컴포넌트에 프롭스값으로 주고 그 변경함수를 이용한다.

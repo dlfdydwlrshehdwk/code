@@ -1,0 +1,59 @@
+HTML
+<div id="player"></div>
+
+
+
+SCRIPT
+let tag = document.createElement('script')
+
+			tag.src = "https://www.youtube.com/iframe_api";
+			let firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+			
+			let player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          // height: '360',  //변경가능-영상 높이
+          // width: '640',  //변경가능-영상 너비
+          videoId: 'M7lc1UVf-VE',  //변경-영상ID
+          playerVars: {
+          	'rel': 0,    //연관동영상 표시여부(0:표시안함)
+            'controls': 1,    //플레이어 컨트롤러 표시여부(0:표시안함)
+            'autoplay' : 0,   //자동재생 여부(1:자동재생 함, mute와 함께 설정)
+            'mute' : 0,   //음소거여부(1:음소거 함)
+            'loop' : 0,    //반복재생여부(1:반복재생 함)
+            'playsinline' : 1,    //iOS환경에서 전체화면으로 재생하지 않게
+            'playlist' : 'M7lc1UVf-VE'   //재생할 영상 리스트
+          },
+          events: {
+            // 'onReady': onPlayerReady, //onReady 상태일 때 작동하는 function이름
+            // 'onStateChange': onPlayerStateChange //onStateChange 상태일 때 작동하는 function이름
+          }
+        });
+      }
+			
+			function onPlayerReady(event) {
+        event.target.playVideo();
+      }
+
+			var done = false;
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING && !done) {
+          setTimeout(stopVideo, 6000);
+          done = true;
+        }
+      }
+      function stopVideo() {
+        player.stopVideo();
+      }
+
+
+설명
+
+그냥아무태그에 id값을 
+
+onYouTubeIframeAPIReady 함수에서 읽어서 
+아무태그에 iframe을 생성해줌 
+
+player 변수로 
+playVideo , pauseVideo 등으로 제어가 가능하다

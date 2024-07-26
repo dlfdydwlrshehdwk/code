@@ -1,0 +1,7 @@
+    function 두글자만들기(x){
+      if(String(x).length){
+        return String(x).padStart(2,"0")
+      } else {
+        return x
+      }
+    }

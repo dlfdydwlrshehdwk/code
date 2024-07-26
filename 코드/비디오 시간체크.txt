@@ -1,0 +1,23 @@
+video.on('timeupdate',function(e){
+                let cTime = e.target.currentTime // 현재영상시간
+                let dTime = e.target.duration // 영상 총 시간
+
+		// 영상이 종료되면 체크
+                video.prop('ended'){
+
+
+                }
+
+              })
+
+비디오가 실행되면 짧은주기로 계속 실행됨
+
+
++
+js에서 비디오 속성넣기
+video.muted = true // 음소거 
+
+제이쿼리에서 비디오 속성넣기 prop()함수사용
+video.prop('muted',true) // 음소거
+
+다른 autoplay,loop 같은 속성들도 사용가능하다.

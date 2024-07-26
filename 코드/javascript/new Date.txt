@@ -1,0 +1,25 @@
+new Date() 
+
+new Date('yyyy-mm-dd') 로 파라미터 받아서 사용가능
++ new Date('May 16, 2024 10:21:51') 또는 new Date('2019/05/16/17:22:10') 이런식으로도 받을 수 있음
+new Date(연, 월, 일, 시, 분, 초, 밀리초) 이다.
+
+new Date()
++ .getFullYear() 년도
++ .getDate() - 오늘날짜
++ ,getMonth() - 달 - 0 이 1월
++ .getDay() - 일 - 0일 - 6토
++ .getHours() - 시
++ .getMinutes () - 분
++ .getSeconds () - 초
++ .getMilliseconds () - 밀리초
+
++ .toDateString() - 읽기쉬운 문자열로 날짜를 반환 ex ) Thu May 16 2019
+
+
+도움이 될만한..
+몇일 전, 몇일 후 계산방법 ( 달, 연도 같음)
+ var now = new Date();	// 현재 날짜 및 시간
+
+var yesterday = new Date(now.setDate(now.getDate() - 1));	// 어제
+var tomorrow = new Date(now.setDate(now.getDate() + 1));	// 내일

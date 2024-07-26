@@ -1,0 +1,18 @@
+  let [img,setImg] = useState([]);
+ 
+ function readURL(e){
+    const files = e.target.files;
+    let nowImageArr = img;
+    if((img.length + files.length) > 10) {
+      return alert('최대 10개 사진만 첨부할 수 있습니다.')
+    }
+    for(let i = 0; i < files.length; i++) {
+      const file = files[i]
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        nowImageArr.push(reader.result)
+        setImg([...nowImageArr])
+      }
+    }
+  }

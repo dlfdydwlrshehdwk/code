@@ -1,0 +1,26 @@
+배열.pop(): 배열의 끝에서 요소 제거
+배열.shift(): 배열의 시작에서 요소 제거
+배열.splice(): 배열의 특정한 인덱스에서 제거
+배열.ilter(): 원하는 방법으로 코드를 작성해 제거
+
+배열.lenght() = number 를 이용해서 배열을 뒤에서 부터도 줄일 수 있음.
+ex) length가 6인 배열을 배열.length = 4 하면 lenght가 4인 배열로 바뀌고 뒤에 2개의 내용이 삭제
+
+배열.splice()  배열의 부분 추가/제거
+const array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const removed = array.splice(2, 2); => 배열의 (앞파라미터)2번째부터 (뒷파라미터)2개 잘라오기
+
+console.log('removed', removed); => [3, 4]
+console.log('array', array); => [1, 2, 5, 6, 7, 8, 9]
+
+배열.filter() 배열의 요소 제거 (조건제거)
+const array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const filtered = array.filter((value, index, arr) => { // 파라미터 (현재값 / index / 전체배열)
+    return value > 5;
+});
+
+console.log('array', array); => [1, 2, 3, 4, 5, 6, 7, 8, 9];
+console.log('filtered', filtered); => [6, 7, 8, 9]
+
+콜백에서 true인 항목을 새배열로 리턴해준다 - 원본 배열은 건드리지 않는다.
+매개변수로 콜백 메소드 하나만 받는다. 여기서 전달받은 콜백은 원본 배열을 루프돌면서 모든 값에 대해 실행된다.

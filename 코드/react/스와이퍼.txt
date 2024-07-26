@@ -1,0 +1,66 @@
+리액트에서 스와이퍼 사용하기
+
+설치 ( 터미널 )
+npm i swiper
+
+셋팅 ( 필수 )
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+
+셋팅 ( 선택 ) - 사용하고자 하는 사항들 + css 를 추가해주어야 함
+import { Navigation, Pagination, Scrollbar } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+
+사용법 - html코드 ( 스와이퍼를 사용할 컴포넌트에서 작성 )
+import { Navigation, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import './App.css'
+
+const App = () => {
+return (
+  <div className="App">
+  // 스와이퍼 컴포넌트 안에 속성들을 넣어야 한다. 
+  <Swiper
+    modules={[Navigation, Pagination]}
+    spaceBetween={50}
+    slidesPerView={3}
+    navigation
+    pagination={{ clickable: true }}
+    scrollbar={{ draggable: true }}
+  >
+    <SwiperSlide>Slide 1</SwiperSlide>
+    <SwiperSlide>Slide 2</SwiperSlide>
+    <SwiperSlide>Slide 3</SwiperSlide>
+    <SwiperSlide>Slide 4</SwiperSlide>
+    <SwiperSlide>Slide 5</SwiperSlide>
+  </Swiper>
+  </div>
+);
+};
+export default App;
+
+사용법 - 이벤트 ( ex. 스와이퍼 초기화 )
+const [swiper, setSwiper] = useState<SwiperCore>();
+
+useEffect(() => {
+  if (swiper) {
+    swiper.slideTo(0); // 슬라이더 초기화
+  }
+}, [displayType]);
+
+<Swiper
+    ...,
+    onSwiper={(swiper) => {
+        setSwiper(swiper)
+    }}
+/>

@@ -1,0 +1,22 @@
+	let controller = new ScrollMagic.Controller() // 컨트롤러 필요
+	let scene = new ScrollMagic.Scene({ // scene 필요
+		triggerElement: target, // 트리거 요소
+		triggerHook: .9, // 뷰포트를 기준으로 시작지점 0맨위 1맨아래
+		markers : true or false, // 트리거 위치 알려주는애 킬지 말지 	
+		duration : 0, // 애니메이션 시간 
+	})
+	.setTween(트윈) // 트윈이나 타임라인 등을 셋팅가능
+	.addTo(controller) // 컨트롤러를 세팅해야함
+	.setClassToggle(target,'ani_start') // 클래스를 트리거에따라 넣다뺐다 해줌
+	.setPin(요소) // 스크롤이벤트 진행시 핀으로 고정할 수 있음
+	
+	// scene에 라이프스타일에 콜백을 넣을 수 있음
+	// scene.on('enter',() => {
+	// 	target.classList.add('ani_start')
+	// })
+	// scene.on('leave',() => {
+	// 	target.classList.remove('ani_start')
+	// })
+
+
+참고 https://scrollmagic.io/docs/index.html
