@@ -1,0 +1,15 @@
+	let tg = document.querySelector('.product_order')
+	tg.addEventListener('click',(e)=>{
+		if(tg.matches('.open')) tg.classList.remove('open')
+		else tg.classList.add('open')
+	})
+	window.addEventListener('mouseup',(e)=>{
+		if(!e.target.closest('.product_order')) tg.classList.remove('open')
+	})
+
+똑같이 click이벤트를 걸면 window에 있는게 무조건 늦게 걸리기때문에
+mouseup을 사용했고 mouseup이 더 빨리 시작되어 
+꼬임없이 코드진행이 가능하다.
+
+tg는 셀렉트박스.
+open클래스 주면 열리고 아니면 닫히는

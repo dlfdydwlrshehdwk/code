@@ -1,0 +1,2 @@
+var regex = /[^0-9]/gi;
+제거할문자열.replace(regex, "");

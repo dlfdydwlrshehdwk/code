@@ -1,0 +1,21 @@
+브레드크럼브
+module="product_headcategory" 
+예시
+<div class="section path" module="product_headcategory" data-ez-module="product-head-breadcrumb/1">
+	<span>현재 위치</span>
+	<ol>
+		<li><a href="/">홈</a></li>
+		<li class="{$disp_cate_1|display}"><a href="{$link_product_list_1}">{$name_1}</a></li> 1단계
+		<li class="{$disp_cate_2|display}"><a href="{$link_product_list_2}">{$name_2}</a></li> 2단계
+		<li class="{$disp_cate_3|display}"><a href="{$link_product_list_3}">{$name_3}</a></li> 3단계
+		<li class="{$disp_cate_4|display}"><a href="{$link_product_list_4}">{$name_4}</a></li> 4단계
+	</ol>
+</div>
+
+컬러칩 (상품색상)
+<div class="{$colorchip_display|display} color">
+	<div class="wrap" module="product_Colorchip">
+		<span class="chips" style="background-color:{$color}"></span>
+		<span class="chips" style="background-color:{$color}"></span>
+	</div>
+</div>

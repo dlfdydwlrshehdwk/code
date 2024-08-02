@@ -1,0 +1,32 @@
+모듈 : Layout_category
+변수 : {$name_or_img_tag} 대분류명
+예시코드 : 
+<div module="Layout_category" class="menu_category">
+	<ul>
+		<li class="{$selected}"><a href="/product/list.html{$param}" class="en">{$name_or_img_tag}</a></li>
+		<li class="{$selected}"><a href="/product/list.html{$param}">{$name_or_img_tag}</a></li>
+	</ul>
+</div>
+
+카페24에서 메인분류표시가 되어있는 분류들이 나온다.
+
+모듈 : product_displaycategory
+변수 : {$category_name}
+대분류 밑의 카테고리가 나온다. depth2
+
+모듈 : product_children
+변수 : {$category_name}
+위의 분류를 기준으로 밑의 카테고리가 나온다 depth3
+
+product_displaycategory, product_children 예시코드
+<ul>		
+	<li module="product_displaycategory" class="{$selected}">
+		<p>{$category_name}</p>
+		<div class="depth3">
+			<a href="/product/list.html?{$param_cate_no}">전체</a>
+			<ul module="product_children">
+				<li class="{$selected}"><a href="/product/list.html?{$param_cate_no}"><span>{$category_name}</span><span class="{$product_count_display|display}">({$product_count})</span></a></li>
+			</ul>
+		</div>
+	</li>
+</ul>
