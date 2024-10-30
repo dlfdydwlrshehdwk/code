@@ -1,0 +1,12 @@
+let arr = [1, 2, 3];
+let result = arr.some(val => val > 2);
+console.log(result); // true
+
+let arr = ['apple', 'banana', 'tomato'];
+let result = arr.some(val => ['melon', 'kiwi', 'tomato'].includes(val));
+console.log(result); // true
+
+https://shawnkim.tistory.com/88
+
+every() 배열 안에 모든 값이 특정 조건을 만족해야 true
+some() 배열 안에 값들 중 하나라도 만족하면 true

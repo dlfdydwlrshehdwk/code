@@ -1,0 +1,13 @@
+pc
+	$(document).on('mouseenter','.mchat_cont.on',function(){
+		document.querySelector('.mchat_cont').addEventListener('wheel', (e) => {
+			e.stopPropagation(); // 팝업 내부 스크롤 이벤트 전파 방지
+		});
+	})
+
+mo
+	$(document).on('touchstart touchmove', '.mchat_cont.on' ,function(e){
+		document.querySelector('.mchat_cont').addEventListener('touchmove',function(e){
+			e.stopPropagation(); // 팝업 내부 스크롤 이벤트 전파 방지
+		})
+	} )

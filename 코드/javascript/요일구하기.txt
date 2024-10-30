@@ -1,0 +1,10 @@
+function getDayOfWeek(날짜문자열){ //ex) getDayOfWeek('2022-06-13')
+
+    const week = ['일', '월', '화', '수', '목', '금', '토'];
+
+    const dayOfWeek = week[new Date(날짜문자열).getDay()];
+
+    return dayOfWeek;
+
+}
+출처: https://wook-dragon.tistory.com/6 [욱드래곤의 우당탕탕 코딩일기:티스토리]

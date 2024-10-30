@@ -1,0 +1,5 @@
+$(document).mouseup(function (e) {
+	var LayerPopup = $(팝업요소);
+	if (LayerPopup.has(e.target).length === 0) {
+	팝업.removeClass("on");
+});

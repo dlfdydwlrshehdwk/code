@@ -1,0 +1,2 @@
+방법1 : transform: skew(-0.001deg);
+방법2 : transform: rotate(0.04deg);

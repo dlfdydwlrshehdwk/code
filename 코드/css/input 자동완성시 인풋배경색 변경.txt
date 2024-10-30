@@ -1,0 +1,22 @@
+.member_wrap #member_login_module_id input:-webkit-autofill,
+.member_wrap #member_login_module_id input:-webkit-autofill:hover,
+.member_wrap #member_login_module_id input:-webkit-autofill:focus,
+.member_wrap #member_login_module_id input:-webkit-autofill:active {
+	-webkit-text-fill-color: var(--black) !important;
+    -webkit-box-shadow: 0 0 0px 1000px #fbf5ee inset !important;
+    box-shadow: 0 0 0px 1000px #fbf5ee inset !important;
+    transition: none !important;
+}
+
+.member_wrap #member_login_module_id input:autofill,
+.member_wrap #member_login_module_id input:autofill:hover,
+.member_wrap #member_login_module_id input:autofill:focus,
+.member_wrap #member_login_module_id input:autofill:active {
+	-webkit-text-fill-color: var(--black) !important;
+    -webkit-box-shadow: 0 0 0px 1000px #fbf5ee inset !important;
+    box-shadow: 0 0 0px 1000px #fbf5ee inset !important;
+    transition: none !important; 
+}
+
+기본속성때문에 background가 안먹힘.
+그래서 box-shodow를 이용해서 색상을 변경

@@ -1,0 +1,12 @@
+            let selectBtn = $('.pick_list .fake');
+            // 영역밖 누르면 닫히게
+            $(document).mousedown(function(e){
+                if(!$(e.target).closest('.pick_list').length){
+                    selectBtn.parent().removeClass('open');
+                }
+            })
+            // 정렬 셀렉트 누르면 열고 닫히게
+            selectBtn.mousedown(function(){
+                console.log('hh')
+                $(this).parent().toggleClass('open');
+            })
